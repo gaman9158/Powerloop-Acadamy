@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<h4>User after login: home page</h5>
+		<h5>Name: [[${user.fullName}]]</h5>
+		<h5>Email: [[${user.email}]]</h5>
+		<h5>Qualification: [[${user.qualification}]]</h5>
+	</section>
+</body>
+</html>

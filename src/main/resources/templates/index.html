@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<section style="position: relative; padding-top: 0px;">
+		<img th:src="@{/images/powerloop_logo.png}" alt="powerloop_logo"
+			class="fade-animation image-active"
+			style="height: 535px; width: 100%; position: absolute;"> <img
+			th:src="@{/images/spring.png}" alt="Spring_logo"
+			class="fade-animation"
+			style="height: 525px; width: 100%; position: absolute;">
+		<style>
+.fade-animation {
+	opacity: 0;
+	transition: opacity 2s ease-in-out;
+}
+
+.image-active {
+	opacity: 1;
+}
+</style>
+		<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll(".fade-animation");
+        let currentIndex = 0;
+
+        setInterval(() => {
+            images[currentIndex].classList.remove("image-active");
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add("image-active");
+        }, 4000); // Change image every 4 seconds
+    });
+</script>
+	</section>
+
+</body>
+</html>
