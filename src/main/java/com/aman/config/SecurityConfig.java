@@ -18,7 +18,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SecurityConfig {
 	
 	@Autowired
-	AuthenticationSuccessHandler customSuccessHandler;
+	AuthenticationSuccessHandler successHandler;
+	
+	@Autowired
+	public CustomFailureHandler failureHandler;
 	
 	@Bean
 	public UserDetailsService getUserDetailsService() {
@@ -45,7 +48,8 @@ public class SecurityConfig {
 				.requestMatchers("/user/**").hasRole("USER").anyRequest().permitAll())
 				.formLogin(form -> form.loginPage("/signin") // Custom login page
 						.loginProcessingUrl("/login") // Login processing URL
-						.successHandler(customSuccessHandler)
+						.failureHandler(failureHandler)
+						.successHandler(successHandler)
 				).csrf(csrf -> csrf.disable());// Disable CSRF protection if needed
 
 		return http.build();
